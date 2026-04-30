@@ -1,0 +1,30 @@
+{
+  "role": "AzureFunctionAppRole",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+        "Microsoft.KeyVault/vaults/secrets/read",
+        "Microsoft.Insights/components/read",
+        "Microsoft.Web/sites/read",
+        "Microsoft.Web/sites/write",
+        "Microsoft.Web/sites/functions/read",
+        "Microsoft.Sql/servers/databases/read",
+        "Microsoft.Sql/servers/databases/write",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/write",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.Authorization/policyAssignments/write",
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Resources/deployments/write"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "scope": "/subscriptions/<subscription-id>/resourceGroups/<resource-group>"
+}
