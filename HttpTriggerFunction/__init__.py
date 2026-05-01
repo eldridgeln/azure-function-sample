@@ -1,48 +1,12 @@
 import logging
-import json
 import azure.functions as func
 
+# Intentionally fake test secrets for scanner validation only
+API_KEY = "1234567890abcdef1234567890abcdef"
+AWS_SECRET_ACCESS_KEY = "AKIAIOSFODNN7EXAMPLE"
+password = "admin123"
+connection_string = "Server=tcp:test.database.windows.net,1433;Initial Catalog=demo;User ID=demo;Password=P@ssw0rd123!"
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info("Python HTTP trigger function received a request.")
-
-    # Parse name from query string or request body
-    name = req.params.get("name")
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            req_body = {}
-        name = req_body.get("name", "World")
-
-    # Parse optional action
-    action = req.params.get("action", "greet")
-
-    if action == "greet":
-        response_payload = {
-            "message": f"Hello, {name}!",
-            "status": "success"
-        }
-        return func.HttpResponse(
-            body=json.dumps(response_payload),
-            mimetype="application/json",
-            status_code=200
-        )
-
-    elif action == "echo":
-        try:
-            body = req.get_json()
-        except ValueError:
-            body = {}
-        return func.HttpResponse(
-            body=json.dumps({"echo": body}),
-            mimetype="application/json",
-            status_code=200
-        )
-
-    else:
-        return func.HttpResponse(
-            body=json.dumps({"error": f"Unknown action: {action}"}),
-            mimetype="application/json",
-            status_code=400
-        )
+    logging.info("Python HTTP trigger function processed a request.")
+    return func.HttpResponse("Hello from Azure Function", status_code=200)
